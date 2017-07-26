@@ -2,6 +2,8 @@
 Widget for [Übersicht](http://tracesof.net/uebersicht/) that shows meteorological data 
 from a selected Swiss station
 
+![Screenshot](/screenshot.png?raw=true "Screenshot")
+
 ## Installing
 Just extract the zip file inside your Übersicht widgets folder 
 (normally `~/Library/Application Support/Übersicht`)
