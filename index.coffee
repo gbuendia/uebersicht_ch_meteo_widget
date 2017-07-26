@@ -24,10 +24,10 @@ show = {
 
 labels = {
 	en: ["Temperature", "Sunshine", "Humidity", "Precipitation", "Wind speed", "Wind direction", "Gust peak", "QFE pressure", "QNH pressure", "QFF pressure"],
-	de: ["Temperatur", "Sonnenschein", "Feuchtigkeit", "Niederschlag", "Windgeschwindigkeit", "Windrichtung"],
-	fr: ["Température", "Ensoleillement", "Humidité", "Précipitation", "Vitesse du vent", "Direction du vent"],
-	it: ["Temperatura", "Soleggiamento", "Umidità", "Precipitazioni", "Velocità del vento", "Direzione del vento"],
-	rm: ["Temperatura", "Sulegl", "Umiditad", "Precipitaziun", "Spertadat dal vent", "Direcziun dal vent"]
+	de: ["Temperatur", "Sonnenschein", "Feuchtigkeit", "Niederschlag", "Windgeschwindigkeit", "Windrichtung", "Böenspitze", "QFE Druck", "QNH Druck", "QFF Druck"],
+	fr: ["Température", "Ensoleillement", "Humidité", "Précipitation", "Vitesse du vent", "Direction du vent", "Rafale maximale", "Pression QFE", "Pression QNH", "Pression QFF"],
+	it: ["Temperatura", "Soleggiamento", "Umidità", "Precipitazioni", "Velocità del vento", "Direzione del vento", "Raffica massima", "Pressione QFE", "Pressione QNH", "Pressione QFF"],
+	rm: ["Temperatura", "Sulegl", "Umiditad", "Precipitaziun", "Spertadat dal vent", "Direcziun dal vent", "Buf maximal", "Pressiun QFE", "Pressiun QNH", "Pressiun QFF"]
 }
 
 command: (callback) ->
@@ -206,7 +206,7 @@ update: (output, domEl) ->
 	$(domEl).find("#value-winddirection").text friendly_direction
 
 	gustpeak = Math.round parseInt(output["gustPeak"],10)
-	$(domEl).find("#value-gustpeak").text gustpeak + "km/h"
+	$(domEl).find("#value-gustpeak").text gustpeak + " km/h"
 
 	qfepressure = output["qfePressure"]
 	$(domEl).find("#value-qfepressure").text qfepressure
