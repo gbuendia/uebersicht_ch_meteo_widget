@@ -1,6 +1,6 @@
 # Übersicht CH Meteo Widget
-Widget for [Übersicht](http://tracesof.net/uebersicht/) that shows meteorological data 
-from a selected Swiss station
+Widget for [Übersicht](http://tracesof.net/uebersicht/) that displays meteorological data 
+from a selected Swiss station (also included Malbun, Schaan and Vaduz, Liechtenstein).
 
 ![Screenshot](/screenshot.png?raw=true "Screenshot")
 
