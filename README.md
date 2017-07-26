@@ -3,7 +3,7 @@ Widget for [Übersicht](http://tracesof.net/uebersicht/) that shows meteorologic
 from a selected Swiss station
 
 ## Installing
-Put it in a folder inside your Übersicht widgets folder 
+Just extract the zip file inside your Übersicht widgets folder 
 (normally `~/Library/Application Support/Übersicht`)
 
 ## Configuring
