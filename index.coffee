@@ -7,11 +7,23 @@
 # http://www.meteoschweiz.admin.ch/home/mess-und-prognosesysteme/bodenstationen/automatisches-messnetz.html
 station = "TAE"
 language = "en" # available: de (deutsch), fr (français), it (italiano), rm (rumatsch)
+show = {
+	temperature:	"yes",	# Temperature in Celsius
+	sunshine:		"yes",	# Minutes of sun last 10 minutes
+	humidity:		"yes",	# Relative in %
+	precipitation:	"yes",	# Millimeters per hour
+	windspeed:		"yes",	# Kilometers per hour
+	wind_direction:	"yes",	# Cardinal point
+	gust_peak:		"no",	# Highest instantaneous wind speed km/h
+	qfe_pressure:	"no",	# QFE pressure in hPa
+	qnh_pressure:	"no",	# QNH pressure in hPa
+	qff_pressure:	"no"	# QFF pressure in hPa
+}
 
 ########################################################################################
 
 labels = {
-	en: ["Temperature", "Sunshine", "Humidity", "Precipitation", "Wind speed", "Wind direction"],
+	en: ["Temperature", "Sunshine", "Humidity", "Precipitation", "Wind speed", "Wind direction", "Gust peak", "QFE pressure", "QNH pressure", "QFF pressure"],
 	de: ["Temperatur", "Sonnenschein", "Feuchtigkeit", "Niederschlag", "Windgeschwindigkeit", "Windrichtung"],
 	fr: ["Température", "Ensoleillement", "Humidité", "Précipitation", "Vitesse du vent", "Direction du vent"],
 	it: ["Temperatura", "Soleggiamento", "Umidità", "Precipitazioni", "Velocità del vento", "Direzione del vento"],
@@ -88,33 +100,55 @@ render: -> """
 			<div id="timestamp"></div>
 		</div>
 		<div id="body">
-			<div class="data">
+			<div class="data" id="temperature">
 				<div class="data-value" id="value-temperature"></div>
 				<div class="data-label" id="label-temperature"></div>
 			</div>
-			<div class="data">
+			<div class="data" id="sunshine">
 				<div class="data-value" id="value-sunshine"></div>
 				<div class="data-label" id="label-sunshine"></div>
 			</div>
-			<div class="data">
+			<div class="data" id="humidity">
 				<div class="data-value" id="value-humidity"></div>
 				<div class="data-label" id="label-humidity"></div>
 			</div>
-			<div class="data">
+			<div class="data" id="precipitation">
 				<div class="data-value" id="value-precipitation"></div>
 				<div class="data-label" id="label-precipitation"></div>
 			</div>
-			<div class="data">
+			<div class="data" id="windspeed">
 				<div class="data-value" id="value-windspeed"></div>
 				<div class="data-label" id="label-windspeed"></div>
 			</div>
-			<div class="data">
+			<div class="data" id="wind_direction">
 				<div class="data-value" id="value-winddirection"></div>
 				<div class="data-label" id="label-winddirection"></div>
+			</div>
+			<div class="data" id="gust_peak">
+				<div class="data-value" id="value-gustpeak"></div>
+				<div class="data-label" id="label-gustpeak"></div>
+			</div>
+			<div class="data" id="qfe_pressure">
+				<div class="data-value" id="value-qfepressure"></div>
+				<div class="data-label" id="label-qfepressure"></div>
+			</div>
+			<div class="data" id="qnh_pressure">
+				<div class="data-value" id="value-qnhpressure"></div>
+				<div class="data-label" id="label-qnhpressure"></div>
+			</div>
+			<div class="data" id="qff_pressure">
+				<div class="data-value" id="value-qffpressure"></div>
+				<div class="data-label" id="label-qffpressure"></div>
 			</div>
 		</div>
 	</div>
 """
+
+afterRender: (domEl) ->
+	for key, value of show
+		if value is "no"
+			hideme = "#" + key
+			$(domEl).find(hideme).hide()
 
 update: (output, domEl) ->
 
@@ -143,6 +177,10 @@ update: (output, domEl) ->
 	$(domEl).find("#label-precipitation").text labels[language][3]
 	$(domEl).find("#label-windspeed").text labels[language][4]
 	$(domEl).find("#label-winddirection").text labels[language][5]
+	$(domEl).find("#label-gustpeak").text labels[language][6]
+	$(domEl).find("#label-qfepressure").text labels[language][7]
+	$(domEl).find("#label-qnhpressure").text labels[language][8]
+	$(domEl).find("#label-qffpressure").text labels[language][9]
 
 	# Populate data
 
@@ -166,3 +204,15 @@ update: (output, domEl) ->
 	sectors = Math.round winddirection / 22.5
 	friendly_direction = compass[sectors]
 	$(domEl).find("#value-winddirection").text friendly_direction
+
+	gustpeak = Math.round parseInt(output["gustPeak"],10)
+	$(domEl).find("#value-gustpeak").text gustpeak + "km/h"
+
+	qfepressure = output["qfePressure"]
+	$(domEl).find("#value-qfepressure").text qfepressure
+
+	qnhpressure = output["qnhPressure"]
+	$(domEl).find("#value-qnhpressure").text qnhpressure
+
+	qffpressure = output["qffPressure"]
+	$(domEl).find("#value-qffpressure").text qffpressure
