@@ -1,5 +1,5 @@
-# uebersicht_ch_meteo_widget
-Widget for Übersicht that shows meteorological data 
+# Übersicht CH Meteo Widget
+Widget for [Übersicht](http://tracesof.net/uebersicht/) that shows meteorological data 
 from a selected Swiss station
 
 ## Installing
@@ -9,7 +9,7 @@ Put it in a folder inside your Übersicht widgets folder
 ## Configuring
 Open `index.coffee` in a text editor and change the following:
 
-* `station = "BER"` to any other three-letter code. You can find a list [at the Meteoschweiz site](http://www.meteoschweiz.admin.ch/home/mess-und-prognosesysteme/bodenstationen/automatisches-messnetz.html)
+* `station = "BER"` to any other three-letter code. You can find a list [at the Meteoschweiz site](http://www.meteoschweiz.admin.ch/home/mess-und-prognosesysteme/bodenstationen/automatisches-messnetz.html).
 * `language = "en"` (English) is the default but you can change it to `de` (German), `fr` (French), `it` (Italian) or `rm` (Romansh).
 
 To reposition the widget, look further in the file for 

@@ -1,5 +1,5 @@
 # Swiss meteorological data from selected weather stations.
-# Data is obtained from Data from http://opendata.netcetera.com
+# Data is obtained from http://opendata.netcetera.com
 # Inspired by disk-usage-bar.widget https://github.com/onishy/Ubersicht-DiskUsage-bar
 
 # CONFIGURATION
@@ -9,7 +9,6 @@ station = "BER"
 language = "en" # available: de (deutsch), fr (français), it (italiano), rm (rumatsch)
 
 ########################################################################################
-# Changes below this line might break things
 
 labels = {
 	en: ["Temperature", "Sunshine", "Humidity", "Precipitation", "Wind speed", "Wind direction"],
