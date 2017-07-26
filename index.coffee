@@ -5,7 +5,7 @@
 # CONFIGURATION
 # The three-letter code for your preferred station can be obtained at:
 # http://www.meteoschweiz.admin.ch/home/mess-und-prognosesysteme/bodenstationen/automatisches-messnetz.html
-station = "BER"
+station = "TAE"
 language = "en" # available: de (deutsch), fr (français), it (italiano), rm (rumatsch)
 
 ########################################################################################
